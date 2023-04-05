@@ -46,10 +46,14 @@ const Todo = () => {
                 <input
                   className="mr-2"
                   type="checkbox"
+                  checked={todo.completed}
                   onClick={() => handleTodoComplete(index)}
                 />
                 <p
-                  className={`flex-1 ml-2 ${todo.completed && "line-through"}`}
+                  style={{
+                    textDecoration: todo.completed ? "line-through" : "",
+                  }}
+                  className={`flex-1 ml-2 `}
                 >
                   {todo.text}
                 </p>

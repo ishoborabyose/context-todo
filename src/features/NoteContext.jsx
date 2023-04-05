@@ -8,6 +8,8 @@ export const TodoContextProvider = ({ children }) => {
   const [newTodo, setNewTodo] = useState("");
   const [isEditing, setIsEditing] = useState({});
 
+  let newTodos = [...todos];
+
   const handleNewTodoChange = (event) => {
     setNewTodo(event.target.value);
   };
@@ -21,32 +23,30 @@ export const TodoContextProvider = ({ children }) => {
   };
 
   const handleTodoDelete = (index) => {
-    const newTodos = [...todos];
     newTodos.splice(index, 1);
     setTodos(newTodos);
   };
 
   const handleTodoEdit = (index, newText) => {
-    const newTodos = [...todos];
+    if (!newText.trim()) {
+      return;
+    }
     newTodos[index].text = newText;
     newTodos[index].isEditing = false;
     setTodos(newTodos);
   };
 
   const handleTodoStartEdit = (index) => {
-    const newTodos = [...todos];
     newTodos[index].isEditing = true;
     setTodos(newTodos);
   };
 
   const handleTodoCancelEdit = (index) => {
-    const newTodos = [...todos];
     newTodos[index].isEditing = false;
     setTodos(newTodos);
   };
 
   const handleTodoComplete = (index) => {
-    const newTodos = [...todos];
     newTodos[index].completed = !newTodos[index].completed;
     setTodos(newTodos);
   };

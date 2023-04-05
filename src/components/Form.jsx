@@ -5,7 +5,6 @@ import { useContext } from "react";
 const Form = () => {
   const { newTodo, handleNewTodoAdd, handleNewTodoChange } =
     useContext(TodoContext);
-  console.log(newTodo);
   return (
     <div className="max-w-3xl mx-auto py-11 px-4">
       <h1 className="text-[#ececec] my-9 text-9xl font-normal text-center">
